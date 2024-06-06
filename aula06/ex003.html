@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font: normal 20pt arial;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var nome = window.prompt('Digite seu nome:')
+        document.write(`Seu nome é ${nome} e tem ${nome.length} letras <br>`)
+        document.write(`Seu nome em letras maiúsculas é ${nome.toUpperCase()} <br>`)
+        document.write(`Seu nome em letras minúsculas é ${nome.toLowerCase()} <br>`)
+
+        n1 = 3/7
+        document.write(`3 dividido por 7 vale ${n1}, 'vamos arredondar pra ${n1.toFixed(2)} <br>`)
+        n2 = 1510.15
+        document.write(`Meu salário é ${n2.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
+    </script>
+</body>
+</html>

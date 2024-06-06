@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: rgb(1, 172, 252);
+        }
+
+        header {
+            background-color: rgb(1, 172, 252);
+        }
+
+        header > h1 {
+            text-align: center;
+            transform: translate(15px, 5px);
+            color: white;
+        }
+
+        header > p {
+            text-align: center;
+            transform: translate(15px, 150px);
+            color: black;
+        }
+
+        main {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(1, 172, 252);
+        }
+
+        section {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+        }
+        
+        div#hora {
+            margin: auto;
+        }
+
+        div#img {
+            width: 250px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        div#img img {
+            width: 250px;
+            height: 250px;
+            background-size: auto;
+        }
+
+        footer {
+            background-color: rgb(1, 172, 252);
+            color: white;
+            text-align: center;
+            transform: translate(15px, -50px);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Seja bem-vindo(a)!</h1>
+        <p id="horadodia">Hora do dia: </p>
+    </header>
+    <main>
+        <section>
+            <div id="img">
+                <img id="imagens" src="" alt="">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Mateus &reg;</p>
+    </footer>
+
+    <script>
+        var agora = new Date()
+        var hora = agora.getHours();
+        var min = agora.getMinutes();
+        var mensagem = document.getElementById('horadodia')
+        var imagem = document.getElementById('imagens')
+
+        function atualizarhoradodia(){
+            if (hora >= 0 && hora < 12) {
+                mensagem.innerHTML = `Bom dia! O horário atual é: ${hora}h${min}min`
+                imagem.src = 'imagens-horadodia/morning.jpg'
+            } else if (hora >= 12 && hora < 18) {
+                mensagem.innerHTML = `Boa tarde! O horário atual é: ${hora}h${min}min`
+                imagem.src = 'imagens-horadodia/afternoon.jpg'
+            } else {
+                mensagem.innerHTML = `Boa noite! O horário atual é: ${hora}h${min}min`
+                imagem.src = 'imagens-horadodia/evening.jpg'
+            }
+        }
+
+        atualizarhoradodia()
+    </script>
+</body>
+</html>

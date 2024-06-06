@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: rgb(0, 102, 255);
+        }
+        header {
+            background-color: rgb(0, 102, 255);
+            color: white;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        section {
+            background-color: white;
+            width: 75%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px black;
+        }
+
+        div{
+            padding: 5px;
+            margin: 5px;
+        }
+        
+        div input {
+            margin: 10px 10px 5px 0px;
+        }
+
+        footer {
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TABUADA</h1>
+    </header>
+        <section>
+            <div id="inp">
+                <label for="num">Número:</label>
+                <input type="number" name="num" id="num"> <br>
+                <input type="button" value="Gerar Tabuada" onclick="calc()">
+            </div>
+            <div>
+                <select name="tab" id="tab"></select>
+            </div>
+        </section>
+    <footer>
+        <p>Feito por Mateus &reg;</p>
+    </footer>
+
+    <script>
+        function calc() {
+            var num = Number(document.getElementById("num").value)
+            var tab = document.getElementById("tab")
+            tab.innerHTML = ''
+            tab.size = 10
+
+            if (num==''){
+                window.alert('Insira um número para continuar')
+            } else {
+                let i = 10
+                while (i>0) {
+                    let option = document.createElement('option')
+                    option.text = `${num} x ${i} = ${num*i}`
+                    option.value = `tab${i}`
+                    tab.add(option)
+                    i--
+                }
+            }
+        }
+    </script>
+</body>
+</html>

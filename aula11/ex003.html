@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistema de multas</h1>
+    <label for="vel">Digite a velocidade do carro: </label>
+    <input type="number" name="vel" id="vel">
+    <input type="button" value="Verificar" onclick="multa()">
+    <div id="res"></div>
+
+    <script>
+        var lim = 100
+
+        function multa(){
+            var vel = Number(document.getElementById('vel').value)
+            var res = document.getElementById('res')
+
+            if (vel > lim) {
+                res.innerHTML = `<p>Sua velocidade atual é de ${vel}!</p>`
+                res.innerHTML += '<p>Você ultrapassou a velocidade máxima permitida! Uma multa será aplicada</p>'
+                res.style.color = '#ff0000'
+            }
+            else {
+                res.innerHTML = `<p>Sua velocidade atual é de ${vel}.</p>`
+                res.innerHTML += '<p>Nenhuma multa será aplicada</p>'
+            }
+        }
+    </script>
+</body>
+</html>

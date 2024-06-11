@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de números</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: rgb(0, 140, 255);
+        }
+
+        header {
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: rgb(0, 140, 255);
+            color: white;
+        }
+
+        main {
+            width: 80vw;
+            margin: auto;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        section {
+            padding: 5px 0;
+        }
+
+        section select {
+            width: 173px;
+            margin: 5px 0;
+        }
+
+        section#out p {
+            padding: 10px 0;
+        }
+
+        footer {
+            margin: 10px 0;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Analisador de números</h1>
+    </header>
+    <main>
+        <section id="in">
+            <label for="num">Digite um número (entre e 1 e 100): </label>
+            <input type="number" id="num">
+            <input type="button" value="adicionar" onclick="adc()">
+        </section>
+        <section id="out">
+            <select name="list" id="list"></select>
+            <p id="total"></p>
+            <p id="bigger"></p>
+            <p id="smaller"></p>
+            <p id="sum"></p>
+            <p id="media"></p>
+            <input type="button" value="Finalizar" onclick="res()">
+        </section>
+    </main>
+    <footer>
+        <p>Feito por Mateus &reg;</p>
+    </footer>
+
+    <script>
+        var vec = []
+
+        function adc() {
+            let num = Number(document.getElementById("num").value)
+            let list = document.getElementById("list")
+            
+            if (num<1 || num >100) {
+            window.alert('Número inválido! Tente novamente.')
+            } else if (vec.includes(num)) {
+                window.alert('Número já existente! Tente novamente.')
+            } else {
+                vec.push(num)
+                let option = document.createElement('option')
+                let tam = vec.length
+                option.text = num
+                list.add(option)
+                list.size = tam
+            }
+        }
+
+        function res() {
+            let total = document.getElementById("total")
+            let bigger = document.getElementById("bigger")
+            let smaller= document.getElementById("smaller")
+            let sum = document.getElementById("sum")
+            let soma = 0
+            let media = document.getElementById("media")
+            
+            if (vec.length === 0){
+                window.alert('A lista está vazia')
+            } else {
+                vec.sort((a, b) => a - b)
+
+                total.innerText = `A lista tem ${vec.length} elementos`
+                bigger.innerText = `O maior elemento é ${vec[vec.length - 1]}`
+                smaller.innerText = `O menor elemento é ${vec[0]}`
+                for (let i=0; i < vec.length; i++){
+                    soma += vec[i]
+                }
+                sum.innerText = `A soma dos elementos vale ${soma}`
+                media.innerText = `A média dos elementos vale ${soma/vec.length}`
+            }
+        }
+
+    </script>
+</body>
+</html>
